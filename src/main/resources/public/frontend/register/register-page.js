@@ -8,11 +8,17 @@ const BASE_URL = "http://localhost:8081"; // backend URL
  * TODO: Get references to various DOM elements
  * - usernameInput, emailInput, passwordInput, repeatPasswordInput, registerButton
  */
+const usernameInput = document.getElementById("username-input");
+const emailInput = document.getElementById("email-input");
+const passwordInput = document.getElementById("password-input");
+const repeatPasswordInput = document.getElementById("repeat-password-input");
+const registerButton = document.getElementById("register-button");
 
 
 /* 
  * TODO: Ensure the register button calls processRegistration when clicked
  */
+registerButton.addEventListener("click", processRegistration);
 
 
 /**
@@ -39,11 +45,24 @@ const BASE_URL = "http://localhost:8081"; // backend URL
  * - Log error and alert user
  */
 async function processRegistration() {
-    // Implement registration logic here
+    // Retrieving values from input fields
+    let username = usernameInput.value;
+    let email = emailInput.value;
+    let password = passwordInput.value;
+    let repeatPassword = repeatPasswordInput.value;
 
-    // Example placeholder:
-    // const registerBody = { username, email, password };
-const requestOptions = {
+    // Checking that all fields are non-empty and that passwords match
+    if (username.length === 0 || email.length === 0 || password.length === 0 || repeatPassword.length === 0){
+        console.log("Field is empty");
+        return;
+    }
+    if (password !== repeatPassword){
+        console.log("Passwords don't match");
+        return;
+    }
+
+    const registerBody = { username, email, password, repeatPassword };
+    const requestOptions = {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -57,5 +76,7 @@ const requestOptions = {
         referrerPolicy: "no-referrer",
         body: JSON.stringify(registerBody)
     };
-    // await fetch(...)
+    await fetch(`${BASE_URL}/register`, requestOptions)
+        .then(reponse => response.status)
+        .then(status => console.log(status));
 }
