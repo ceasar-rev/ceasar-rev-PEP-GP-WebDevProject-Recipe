@@ -61,7 +61,7 @@ async function processRegistration() {
         return;
     }
 
-    const registerBody = { username, email, password, repeatPassword };
+    const registerBody = { username, email, password };
     const requestOptions = {
         method: "POST",
         mode: "cors",
