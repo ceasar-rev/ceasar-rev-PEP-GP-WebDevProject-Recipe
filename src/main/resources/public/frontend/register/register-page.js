@@ -52,12 +52,12 @@ async function processRegistration() {
     let repeatPassword = repeatPasswordInput.value;
 
     // Checking that all fields are non-empty and that passwords match
-    if (username.length === 0 || email.length === 0 || password.length === 0 || repeatPassword.length === 0){
-        console.log("Field is empty");
+    if (username.trim().length === 0 || email.trim().length === 0 || password.trim().length === 0 || repeatPassword.trim().length === 0){
+        alert("Field is empty");
         return;
     }
     if (password !== repeatPassword){
-        console.log("Passwords don't match");
+        alert("Passwords don't match");
         return;
     }
 
