@@ -76,7 +76,7 @@ async function processRegistration() {
         referrerPolicy: "no-referrer",
         body: JSON.stringify(registerBody)
     };
-    await fetch(`${BASE_URL}/register`, requestOptions)
-        .then(reponse => response.status)
-        .then(status => console.log(status));
+    const response = await fetch(`${BASE_URL}/register`, requestOptions);
+    const status = response.status;
+    console.log(status);
 }
