@@ -76,7 +76,20 @@ async function processRegistration() {
         referrerPolicy: "no-referrer",
         body: JSON.stringify(registerBody)
     };
-    const response = await fetch(`${BASE_URL}/register`, requestOptions);
-    const status = response.status;
-    console.log(status);
+    try {
+        const response = await fetch(`${BASE_URL}/register`, requestOptions);
+        const status = response.status;
+        if (status === 201){
+            window.location.href = "../login/login-page.html";
+        }
+        else if (status === 409) {
+            alert("Username or email already exists!");
+        }
+        else {
+            alert("Registration failed. Something went wrong.");
+        }
+    } catch (error) {
+        console.log(error);
+        alert("An error has occurred.");
+    }
 }
