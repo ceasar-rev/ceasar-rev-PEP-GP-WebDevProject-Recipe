@@ -81,7 +81,7 @@ async function addIngredient() {
             getIngredients();
         }
         else {
-            alert("Failed to retrieve ingredients.");
+            console.log("Failed to retrieve ingredients.");
         }
     } catch (error) {
         console.log(error);
@@ -165,8 +165,9 @@ async function deleteIngredient() {
                 console.log(error);
                 alert("An error has occurred.");
             }
-            // console.log("Match found!");
-            // break;
+            finally {
+                return;
+            }
         }
         ingredientIndex++;
     }
