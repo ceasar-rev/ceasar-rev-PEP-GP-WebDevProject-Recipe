@@ -83,8 +83,8 @@ async function processLogin() {
         // - Store both in sessionStorage using sessionStorage.setItem()
         if (status === 200){
             const [token, isAdmin] = responseText.split(" ");
-            sessionStorage.setItem("token", token);
-            sessionStorage.setItem("isAdmin", isAdmin);
+            sessionStorage.setItem("auth-token", token);
+            sessionStorage.setItem("is-admin", isAdmin);
             setTimeout(() => {
                 window.location.href = "../recipe/recipe-page.html";
             }, 500);
