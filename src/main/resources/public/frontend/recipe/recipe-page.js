@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", () => {
      * TODO: Show admin link if is-admin flag in sessionStorage is "true"
      */
     let isAdmin = sessionStorage.getItem("is-admin");
-    if (isAdmin){
+    if (isAdmin === "true"){
         adminLink.style.display = "inline";
     }
 
@@ -212,7 +212,7 @@ window.addEventListener("DOMContentLoaded", () => {
             alert("Name is empty.");
             return;
         }
-        if (!isAdmin){
+        if (isAdmin === "false"){
             alert("Cannot delete recipe!");
             return;
         }
