@@ -212,6 +212,10 @@ window.addEventListener("DOMContentLoaded", () => {
             alert("Name is empty.");
             return;
         }
+        if (!isAdmin){
+            alert("Cannot delete recipe!");
+            return;
+        }
         try {
             const response = await fetch(`${BASE_URL}/recipes?name=${deleteRecipeName}`);
             const status = response.status;
