@@ -73,7 +73,7 @@ async function addIngredient() {
     body: JSON.stringify({name: newIngredientName})
     };
     try {
-        const response = await fetch(`${BASE_URL}/ingredients`);
+        const response = await fetch(`${BASE_URL}/ingredients`, requestOptions);
         const status = response.status;
         if (status === 201){
             console.log("Ingredient received!");
@@ -171,21 +171,6 @@ async function deleteIngredient() {
         }
         ingredientIndex++;
     }
-    // try {
-    //     const response = await fetch(`${BASE_URL}/ingredients?term=${deleteIngredientName}`);
-    //     const status = response.status;
-    //     if (status === 200){
-    //         const myIngredients = await response.text();
-    //         console.log("Ingredient has been found!");
-    //         console.log(myIngredients);
-    //     }
-    //     else {
-    //         console.log("Ingredient was not found.");
-    //     }
-    // } catch (error) {
-    //     console.log(error);
-    //     alert("An error has occurred.");
-    // }
 }
 
 
